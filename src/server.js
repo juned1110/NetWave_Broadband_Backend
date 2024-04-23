@@ -1,13 +1,32 @@
-import express from "express";
-import axios from "axios";
-const app = express();
+import dotenv from "dotenv";
+import connectDB from "./db/index.js";
 
-app.get("/", (req, res) => {
-  res.send("Server is ready");
+dotenv.config({
+  path: "./env",
 });
 
-const port = process.env.PORT || 3000;
+connectDB();
 
-app.listen(port, () => {
-  console.log(`Server at http://localhost:${port}`);
-});
+// const app = express();
+
+// (async () => {
+//   try {
+//     await mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`);
+//     app.on("error", (error) => {
+//       console.log("ERR:", error);
+//       throw error;
+//     });
+//     app.listen(process.env.PORT, () => {
+//       console.log(`App is listing on port ${process.env.PORT}`);
+//     });
+//   } catch (error) {
+//     console.error("ERROR: ", error);
+//     throw error;
+//   }
+// })();
+
+// app.get("/", (req, res) => {
+//   res.send("Server is ready");
+// });
+
+// const port = process.env.PORT || 3000;
